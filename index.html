@@ -75,6 +75,7 @@
             .then((registration) => {
               swRegistration = registration;
 
+              setBadgeScore(99);
               console.log("Service Worker registered: ", registration);
             })
             .catch((error) => {
