@@ -43,12 +43,27 @@
         deferredPrompt = event;
       });
 
+      function setBadgeScore(numberOfUnreadMessages) {
+                if (navigator.clearAppBadge) {
+                    // Remove the badge on the app icon.
+                    navigator.clearAppBadge();
+                }
+                if (numberOfUnreadMessages && navigator.setAppBadge) {
+                    // Display the number of unread messages.
+                    navigator.setAppBadge(numberOfUnreadMessages);
+                }
+            }
+            window.setBadgeScore = setBadgeScore;
       function notification() {
         const options = {
           body: "Testing Our Notification",
           icon: "./bell.png",
         };
         swRegistration.showNotification("PWA Notification!", options);
+        setTimeout(() => {
+          setBadgeScore(9999)
+        }, 2000);
+
 
         new Notification("Hello, world!");
       }
