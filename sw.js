@@ -12,14 +12,14 @@ self.addEventListener("fetch", (event) => {
 
 // Listen to "push" events in the service worker.
 self.addEventListener("push", (event) => {
-  alert("intercepted 1");
+  console.log("intercepted 1");
   // Set or clear the badge.
   if (navigator.setAppBadge) {
     navigator.setAppBadge(55);
-    alert("intercepted 2");
+    console.log("intercepted 2");
   }
 });
-
+ 
 self.addEventListener('notificationclick', function (event)
 {
     //For root applications: just change "'./'" to "'/'"
@@ -36,11 +36,11 @@ self.addEventListener('notificationclick', function (event)
                     return client.focus();
                 }
             }
-            alert('yes')
+            console.log('yes')
             return clients.openWindow(rootUrl+'/aa').then(function (client) { client.focus(); });
         })
     );
 
-    alert('yes')
+    console.log('yes')
     clients.openWindow('https://google.com');
 });
