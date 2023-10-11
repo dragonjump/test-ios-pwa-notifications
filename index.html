@@ -74,10 +74,11 @@
         const message = event.data.json();
         const unreadCount = message.unreadCount;
 
+        alert('intercepted 1')
         // Set or clear the badge.
         if (navigator.setAppBadge) { 
-            navigator.setAppBadge(10000);
-         
+            navigator.setAppBadge(55);
+         alert('intercepted 2')
         }
       });
 
