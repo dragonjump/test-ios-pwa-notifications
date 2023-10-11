@@ -43,10 +43,8 @@
         deferredPrompt = event;
       });
 
-      function setBadgeScore(numberOfUnreadMessages) {
-        alert(2);
-        if (numberOfUnreadMessages && navigator.setAppBadge) {
-          alert(3);
+      function setBadgeScore(numberOfUnreadMessages) { 
+        if (numberOfUnreadMessages && navigator.setAppBadge) { 
           // Display the number of unread messages.
           navigator.setAppBadge(numberOfUnreadMessages);
         }
@@ -58,8 +56,7 @@
           icon: "./bell.png",
         };
         swRegistration.showNotification("PWA Notification!", options);
-        setTimeout(() => {
-          alert(1);
+        setTimeout(() => { 
           setBadgeScore(99);
         }, 2000);
 
@@ -68,19 +65,8 @@
 
       let swRegistration = null;
 
-      // Listen to "push" events in the service worker.
-      self.addEventListener("push", (event) => {
-        // Extract the unread count from the push message data.
-        const message = event.data.json();
-        const unreadCount = message.unreadCount;
-
-        alert('intercepted 1')
-        // Set or clear the badge.
-        if (navigator.setAppBadge) { 
-            navigator.setAppBadge(55);
-         alert('intercepted 2')
-        }
-      });
+      window.doWebNotification = notification;
+  
 
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {

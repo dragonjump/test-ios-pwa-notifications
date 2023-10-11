@@ -36,10 +36,11 @@ self.addEventListener('notificationclick', function (event)
                     return client.focus();
                 }
             }
-
-            return clients.openWindow(rootUrl).then(function (client) { client.focus(); });
+            alert('yes')
+            return clients.openWindow(rootUrl+'/aa').then(function (client) { client.focus(); });
         })
     );
 
+    alert('yes')
     clients.openWindow('https://google.com');
 });
