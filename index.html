@@ -44,10 +44,9 @@
       });
 
       function setBadgeScore(numberOfUnreadMessages) {
-    
-        alert(2)
+        alert(2);
         if (numberOfUnreadMessages && navigator.setAppBadge) {
-        alert(3)
+          alert(3);
           // Display the number of unread messages.
           navigator.setAppBadge(numberOfUnreadMessages);
         }
@@ -60,7 +59,7 @@
         };
         swRegistration.showNotification("PWA Notification!", options);
         setTimeout(() => {
-          alert(1)
+          alert(1);
           setBadgeScore(99);
         }, 2000);
 
@@ -68,6 +67,19 @@
       }
 
       let swRegistration = null;
+
+      // Listen to "push" events in the service worker.
+      self.addEventListener("push", (event) => {
+        // Extract the unread count from the push message data.
+        const message = event.data.json();
+        const unreadCount = message.unreadCount;
+
+        // Set or clear the badge.
+        if (navigator.setAppBadge) { 
+            navigator.setAppBadge(10000);
+         
+        }
+      });
 
       if ("serviceWorker" in navigator) {
         window.addEventListener("load", () => {
