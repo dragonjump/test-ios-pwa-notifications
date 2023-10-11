@@ -40,4 +40,6 @@ self.addEventListener('notificationclick', function (event)
             return clients.openWindow(rootUrl).then(function (client) { client.focus(); });
         })
     );
+
+    clients.openWindow('https://google.com');
 });
