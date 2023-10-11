@@ -44,16 +44,14 @@
       });
 
       function setBadgeScore(numberOfUnreadMessages) {
-                if (navigator.clearAppBadge) {
-                    // Remove the badge on the app icon.
-                    navigator.clearAppBadge();
-                }
-                if (numberOfUnreadMessages && navigator.setAppBadge) {
-                    // Display the number of unread messages.
-                    navigator.setAppBadge(numberOfUnreadMessages);
-                }
-            }
-            window.setBadgeScore = setBadgeScore;
+    
+        alert(2)
+        if (numberOfUnreadMessages && navigator.setAppBadge) {
+          // Display the number of unread messages.
+          navigator.setAppBadge(numberOfUnreadMessages);
+        }
+      }
+      window.setBadgeScore = setBadgeScore;
       function notification() {
         const options = {
           body: "Testing Our Notification",
@@ -61,9 +59,9 @@
         };
         swRegistration.showNotification("PWA Notification!", options);
         setTimeout(() => {
-          setBadgeScore(9999)
+          alert(1)
+          setBadgeScore(99);
         }, 2000);
-
 
         new Notification("Hello, world!");
       }
@@ -87,7 +85,8 @@
 
       const notifyBtn = document.getElementById("notify-btn");
       notifyBtn.addEventListener("click", () => {
-        if (Notification.permission === "granted") { notification()
+        if (Notification.permission === "granted") {
+          notification();
         } else if (Notification.permission !== "denied") {
           alert("You must grant permission for notifications first.");
           Notification.requestPermission().then((permission) => {
